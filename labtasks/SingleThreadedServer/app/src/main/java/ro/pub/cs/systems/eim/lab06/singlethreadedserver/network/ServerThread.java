@@ -56,6 +56,14 @@ public class ServerThread extends Thread {
 
                 PrintWriter printWriter = Utilities.getWriter(socket);
                 printWriter.println(serverTextEditText.getText().toString());
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException interruptedException) {
+                    Log.e(Constants.TAG, interruptedException.getMessage());
+                    if (Constants.DEBUG) {
+                        interruptedException.printStackTrace();
+                    }
+                }
                 socket.close();
                 Log.v(Constants.TAG, "Connection closed");
 
